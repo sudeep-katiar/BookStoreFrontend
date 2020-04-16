@@ -1,1 +1,50 @@
-<p>dashboard works!</p>
+<mat-toolbar class="docs-navbar-header">
+    <mat-toolbar-row class="toolbar">
+  
+        <div class="Main">
+            <div class="sideNavIcon">
+            <div style="position: absolute; left: 45px; top: 6px;">
+                <img src="../../../assets/bookLogo.png" height="50px" width="50px">
+            </div>
+  
+            <div style="color: white; position: absolute; left: 115px;">BookStore</div>
+  
+        </div>
+  
+        <div class="searchWhole">
+  
+  
+            <div class="searchbar">
+            <div class="searchIcon">
+                <mat-icon matSuffix>search</mat-icon>
+            </div>
+            <div>
+                <input class="input" matInput type="searchbar" placeholder="  Search" style="outline:none;">
+            </div>
+        </div>
+        </div>
+        <button mat-icon-button style="position: absolute; right: 140px; top: 12px; color: whitesmoke;">Cart &nbsp;&nbsp;&nbsp;
+            <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+  
+        
+        </div>
+
+    </mat-toolbar-row>
+  
+  </mat-toolbar>
+
+  <!-- page details -->
+
+  <div class="bookHeading">
+        <span class="book">Books</span>
+        <span class="item">(5 items)</span>
+        <span class="revelence" style="position: absolute; left: 62em;">
+          <select style="outline: none; border-radius: 10px 10px 10px 10px;">
+            <option value="Sort by revelence">Sort by revelence</option>
+            <option value="lowToHigh">Price:Low to High</option>
+            <option value="highTOLow">Price:High to Low</option>
+            <option value="newestArrival">Newest Arrival</option>
+          </select>
+        </span>
+  </div>
