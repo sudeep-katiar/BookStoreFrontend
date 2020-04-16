@@ -1,0 +1,85 @@
+.toolbar {
+    background-color: firebrick;
+}
+
+.Main{
+    display: flex;
+    width: 100%
+}
+
+.sideNavIcon{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 156px;
+    cursor: pointer;
+}
+
+.searchWhole{
+    color: lightgrey;
+    display: flex;
+    justify-content: space-between;
+    width: 40em;
+    position: absolute;
+    top: 8px;
+    left: 270px;
+}
+.searchbar{
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    background-color: #fff;
+    border-radius: 7px;
+    height: 44px;
+    width: 35em;
+}
+.input{
+    width: 47em;
+    padding: 10px;
+    border-style: none;
+}
+.searchIcon{
+    display: flex;
+    align-items: center;
+}
+
+.example-container {
+    width: -400px;
+    height:100vh;
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    width:400vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+  width: 200px;
+  }
+
+  .maindiv {
+      display: inline;
+  }
+
+  .bookHeading {
+      position: absolute;
+      top: 80px;
+      left: 70px;
+  }
+
+  .book {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: x-large;
+      color: tomato;
+  }
+
+  .item {
+      color: lightgrey;
+  }
+
+  .revelence {
+      right: 70px;
+  }
