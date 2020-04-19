@@ -5,9 +5,12 @@
 export const environment = {
   production: false,
   apiUrl:'http://localhost:8081/user/',
+  bookUrl:'http://localhost:8081/book/',
 
   registerURL:'register/',
   loginURL:'login/',
+
+  getAllBooks:'allbooks/'
   
 };
 
