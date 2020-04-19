@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { UserServiceService } from 'src/app/service/userservice.service';
+import { BookserviceService } from 'src/app/service/bookservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +12,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  books: any;
+  size: any;
+  id: any;
 
-  constructor() { }
+  constructor(private dialog: MatDialog,
+    private formBuilder: FormBuilder,
+    private matSnackBar: MatSnackBar,
+    private router: Router,
+    private route: ActivatedRoute,
+    private bookService: BookserviceService,
+    private httpClient: HttpClient,
+    private userService: UserServiceService) {
+
+      this.userService.getQueryParam().subscribe((message) => {
+      this.id = message.id;
+      this.getAllBooks();});
+     }
 
   ngOnInit() {
+    this.bookService.autoRefresh$.subscribe(()=>{
+      this.getAllBooks();
+    });
+    this.getAllBooks();
+  }
+
+  public getAllBooks() {
+    this.bookService.getBookList(localStorage.getItem('token')).subscribe((message) => {
+      console.log("here the message "+message);
+      this.books = message.bookList;
+      this.size = message.bookList.length;
+    });
   }
 
 }
