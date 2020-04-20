@@ -10,8 +10,8 @@ export const environment = {
   registerURL:'register/',
   loginURL:'login/',
 
-  getAllBooks:'allbooks/'
-  
+  getAllBooks:'allbooks/',
+  addToBag:'addToBag'
 };
 
 /*
