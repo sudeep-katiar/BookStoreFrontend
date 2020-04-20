@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit {
   books: any;
   size: any;
   id: any;
+  token: string;
+  toggle = true;
 
   constructor(private dialog: MatDialog,
     private formBuilder: FormBuilder,
@@ -31,6 +33,7 @@ export class DashboardComponent implements OnInit {
      }
 
   ngOnInit() {
+    this.token=localStorage.getItem('token');
     this.bookService.autoRefresh$.subscribe(()=>{
       this.getAllBooks();
     });
@@ -38,10 +41,20 @@ export class DashboardComponent implements OnInit {
   }
 
   public getAllBooks() {
-    this.bookService.getBookList(localStorage.getItem('token')).subscribe((message) => {
-      console.log("here the message "+message);
-      this.books = message.bookList;
-      this.size = message.bookList.length;
+    this.bookService.getBookList(this.token).subscribe((message) => {
+      console.log("here the message ",message.data);
+      this.books = message.data;
+      this.size = message.data.length;
+    });
+  }
+
+  addToBag(bookId) {
+    this.toggle = !this.toggle;
+    this.bookService.addToBag(bookId, this.token).subscribe((message) => {
+      console.log(message);
+      this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {
+        duration: 4000,
+      });
     });
   }
 
