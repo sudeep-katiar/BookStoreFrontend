@@ -22,8 +22,13 @@ export class BookserviceService {
   constructor(private http: HttpClient, private httpservice: HttpserviceService) { }
 
   getBookList(token: string): Observable<any> {
-    return this.http.post<any>( this.bookURl + environment.getAllBooks,{ headers: new HttpHeaders().set('token', localStorage.token) }
+    return this.http.post<any>( this.bookURl + environment.getAllBooks,{},
+      { headers: new HttpHeaders().set("token", localStorage.token) }
     );
+  }
+
+  addToBag(id, token:string): Observable<any> {
+    return this.http.post<any>(this.bookURl + environment.addToBag,{},{ headers: new HttpHeaders().set("token", localStorage.token) });
   }
 
 }
