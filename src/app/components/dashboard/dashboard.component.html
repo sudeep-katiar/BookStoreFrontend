@@ -46,16 +46,10 @@
         <form>
           <mat-form-field appearance="outline">
             <mat-label>sort by relevance</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="choice">
-              <mat-option>
-                Price:High To Low
-              </mat-option>
-              <mat-option>
-                Price:Low To High
-              </mat-option>
-              <mat-option>
-                Newest Arrival
-              </mat-option>
+            <mat-select [(value)]="selected">
+              <mat-option value="Price:High To Low">Price:High To Low</mat-option>
+              <mat-option value="Price:Low To High">Price:Low To High</mat-option>
+              <mat-option value="Newest Arrival">Newest Arrival</mat-option>
             </mat-select>
           </mat-form-field>
         </form>
@@ -66,7 +60,7 @@
       <div class="getAllBooks" *ngFor="let book of books" fxLayout="{{ view }}" [fxLayoutAlign]="center" fxFlexOffset="5">
         <mat-card matTooltip="{{ book.bookDetails }}">
           <mat-card-title>
-            <img src="../../../assets/logo.jpg" style=" height: 150px; width: 120px; margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; "/>
+            <img src="../../../{{ book.filepath }}" style=" height: 150px; width: 120px; margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; "/>
           </mat-card-title>
           <mat-card-content
             ><div class="bookname">{{ book.bookName }}</div>
