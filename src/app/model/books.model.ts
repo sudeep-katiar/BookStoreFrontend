@@ -9,4 +9,5 @@ export class Book {
     wishlist : boolean;
     addToBag : boolean;
     createdBy : number;
+    filepath : string;
   }
