@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserServiceService } from 'src/app/service/userservice.service';
 import { BookserviceService } from 'src/app/service/bookservice.service';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,10 +14,12 @@ import { BookserviceService } from 'src/app/service/bookservice.service';
 })
 export class DashboardComponent implements OnInit {
   books: any;
-  size: any;
+  size: number;
   id: any;
   token: string;
   toggle = true;
+  bookName: string;
+  bookSearch: any;
 
   constructor(private dialog: MatDialog,
     private formBuilder: FormBuilder,
@@ -46,10 +49,27 @@ export class DashboardComponent implements OnInit {
       this.books = message.data;
       this.size = message.data.length;
     });
+    this.getSearchBookData();
+  }
+
+  getSearchBookData() {
+    this.bookService.getSearchBookData().subscribe((message) => {
+      console.log("search data- ", message.books);
+      this.bookSearch = message.books;
+    })
+  }
+
+  openDialog():void {
+    const dialogRef = this.dialog.open(CartComponent, {
+      width: "auto",
+      panelClass: "custom-dialog-container",
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("the dialog box is closed");
+    });
   }
 
   addToBag(bookId) {
-    this.toggle = !this.toggle;
     this.bookService.addToBag(bookId, this.token).subscribe((message) => {
       console.log(message);
       this.matSnackBar.open("Book Added to Bag SuccessFully", "OK", {
@@ -57,5 +77,14 @@ export class DashboardComponent implements OnInit {
       });
     });
   }
+
+  addToWishlist(bookId) {
+    this.toggle = !this.toggle;
+  }
+
+  // bookSearch() {
+  //   // console.log(this.bookName);
+  //   this.bookService.setSearchBookData(this.bookName);
+  // }
 
 }
