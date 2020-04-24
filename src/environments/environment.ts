@@ -11,7 +11,8 @@ export const environment = {
   loginURL:'login/',
 
   getAllBooks:'allbooks/',
-  addToBag:'addToBag'
+  addToBag:'addToBag',
+  getCartBooks:'cartbooks/'
 };
 
 /*
