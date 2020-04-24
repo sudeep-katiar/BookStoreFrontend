@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatTooltipModule, MatCheckbox, MatCheckboxModule } from '@angular/material';
+import { MatTooltipModule, MatCheckbox, MatCheckboxModule, MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,14 +22,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { BooksearchPipe } from './pipes/booksearch.pipe';
-import { DashboardComponent } from './components/dashboard/dashboard.component'; 
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     BooksearchPipe,
-    DashboardComponent
+    DashboardComponent,
+    CartComponent,
+    ToolbarComponent
     
   ],
   imports: [
@@ -40,6 +44,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatRadioModule,
     MatSnackBarModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -57,6 +62,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AmazingTimePickerModule
   ],
 
-  providers: [ { provide: MatDialogTitle, useValue: {} }, { provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: [] } ],  bootstrap: [AppComponent]
+  providers: [ {provide:MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'accent'} }, { provide: MatDialogTitle, useValue: {} }, { provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: [] } ],  bootstrap: [AppComponent]
 })
 export class AppModule { }
