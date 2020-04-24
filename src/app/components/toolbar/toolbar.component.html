@@ -1,0 +1,41 @@
+<mat-toolbar class="docs-navbar-header">
+    <mat-toolbar-row class="toolbar">
+  
+        <div class="Main">
+            <div class="sideNavIcon">
+                <div style="position: absolute; left: 45px; top: 6px;">
+                    <img src="../../../assets/bookLogo.png" height="50px" width="50px">
+                </div>
+  
+                <div style="color: white; position: absolute; left: 115px;">BookStore</div>
+  
+            </div>
+  
+            <div class="searchWhole">
+  
+  
+                <div class="searchbar">
+                    <div class="searchIcon">
+                        <mat-icon matSuffix>search</mat-icon>
+                    </div>
+                    <div>
+                        <input class="input" matInput type="searchbar" [(ngModel)]="bookName" (input)="bookSearch()" placeholder="  Search" style="outline:none;"/>
+                    </div>
+                </div>
+            </div>
+            <button mat-icon-button style="position: absolute; right: 140px; top: 12px; color: whitesmoke;" routerLink="/cart">Cart &nbsp;&nbsp;&nbsp;
+                <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+            <button [routerLink]="['']" (click)="logout()" mat-button class="signout-button" >
+                Signout
+            </button>
+        
+        </div>
+
+    </mat-toolbar-row>
+  
+  </mat-toolbar>
+
+  <footer class="bottom">
+    Copyright &copy; 2020, Bookstore Private Limited. All rights reserved
+  </footer>
