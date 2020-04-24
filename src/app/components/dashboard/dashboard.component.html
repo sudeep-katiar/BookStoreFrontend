@@ -1,4 +1,4 @@
-<mat-toolbar class="docs-navbar-header">
+<!-- <mat-toolbar class="docs-navbar-header">
     <mat-toolbar-row class="toolbar">
   
         <div class="Main">
@@ -19,11 +19,11 @@
                 <mat-icon matSuffix>search</mat-icon>
             </div>
             <div>
-                <input class="input" matInput type="searchbar" placeholder="  Search" style="outline:none;">
+                <input class="input" matInput type="searchbar" [(ngModel)]="bookName" (input)="booksearch()" placeholder="  Search" style="outline:none;"/>
             </div>
         </div>
         </div>
-        <button mat-icon-button style="position: absolute; right: 140px; top: 12px; color: whitesmoke;">Cart &nbsp;&nbsp;&nbsp;
+        <button mat-icon-button style="position: absolute; right: 140px; top: 12px; color: whitesmoke;" (click)="openDialog()">Cart &nbsp;&nbsp;&nbsp;
             <mat-icon>add_shopping_cart</mat-icon>
         </button>
   
@@ -32,7 +32,9 @@
 
     </mat-toolbar-row>
   
-  </mat-toolbar>
+  </mat-toolbar> -->
+
+  <app-toolbar></app-toolbar>
 
   <!-- page details -->
 
@@ -57,18 +59,18 @@
     </div>
   
     <div class="list-books">
-      <div class="getAllBooks" *ngFor="let book of books" fxLayout="{{ view }}" [fxLayoutAlign]="center" fxFlexOffset="5">
+      <div class="getAllBooks" *ngFor="let book of books | bookSearch: bookSearch" fxLayout="{{ view }}" [fxLayoutAlign]="center" fxFlexOffset="5">
         <mat-card matTooltip="{{ book.bookDetails }}">
           <mat-card-title>
-            <img src="../../../{{ book.filepath }}" style=" height: 150px; width: 120px; margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; "/>
+            <img src="../../../{{ book.filepath }}" style=" height: 171px; width: 140px; margin-left: 45px; margin-right: 45px; padding-top: 10px; padding-bottom: 10px; "/>
           </mat-card-title>
           <mat-card-content
             ><div class="bookname">{{ book.bookName }}</div>
             <div class="authorname">by {{ book.authorName }}</div>
             <div class="price">Rs. {{ book.price }}</div>
             <div class="cart-buttons">
-              <div><button class="addtobag" (click)="addToBag(book.bookId, book.quantity)">ADD TO BAG</button></div>
-              <div><button class="wishlist" (click)="addToWishlist(book.bookId, book.quantity)">WISHLIST</button></div>
+              <div><button class="addtobag" (click)="addToBag(book.bookId)">ADD TO BAG</button></div>
+              <div><button class="wishlist" [style.background-color]="toggle ? 'white' : 'green'" (click)="addToWishlist(book.bookId)">WISHLIST</button></div>
             </div>
           </mat-card-content>
         </mat-card>
