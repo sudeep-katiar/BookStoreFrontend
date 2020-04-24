@@ -1,0 +1,84 @@
+<app-toolbar></app-toolbar>
+
+<div class=main-div>
+  <mat-card style="width: 30em; height: 80vh;">
+    <form [formGroup]="registerForm">
+
+
+
+      <div fxLayout="row" fxLayoutAlign="center" style="font-size:24px; ">
+          Customer Details
+        </div>
+
+      <div class="form_field">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+            <input matInput placeholder="Name">
+            <mat-icon matSuffix>perm_identity</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>pinCode</mat-label>
+          <input matInput placeholder="pinCode">
+          <mat-icon matSuffix>perm_identity</mat-icon>
+        </mat-form-field></div>
+
+      <div class="form_field">
+        <mat-form-field appearance="outline" class="form-Email">
+          <mat-label>Email</mat-label>
+            <input matInput placeholder="email">
+            <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput placeholder="mobilenumber">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>address</mat-label>
+          <input matInput placeholder="Address">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+          <div class="gender"><label class="example-margin">Gender:</label>&nbsp;
+            <mat-radio-group>
+              <mat-radio-button value="male">Male</mat-radio-button>&nbsp;
+              <mat-radio-button value="female">Female</mat-radio-button>&nbsp;
+              <mat-radio-button value="other">Other</mat-radio-button>&nbsp;
+            </mat-radio-group>
+          </div>
+          <div class="form_field">
+            <button mat-raised-button (click)="onSubmit()">Register</button>
+          </div>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
+
+
+<div class="container" fxLayoutAlign="center center">
+  <div class="list-books">
+      <div class="getAllBooks" *ngFor="let book of books" fxLayout="{{ view }}" [fxLayoutAlign]="center" fxFlexOffset="5">
+        <mat-card matTooltip="{{ book.bookDetails }}">
+          <mat-card-title>
+            <img src="../../../{{ book.filepath }}" style=" height: 150px; width: 120px; margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; "/>
+          </mat-card-title>
+          <mat-card-content
+            ><div class="bookname">{{ book.bookName }}</div>
+            <div class="authorname">by {{ book.authorName }}</div>
+            <div class="price">Rs. {{ book.price }}</div>
+            <div class="cart-buttons">
+              <div><button class="addtobag" (click)="addToBag(book.bookId)">ADD TO BAG</button></div>
+              <div><button class="wishlist" [style.background-color]="toggle ? 'green' : 'red'" (click)="addToWishlist(book.bookId)">WISHLIST</button></div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+</div>
