@@ -10,6 +10,7 @@ import { Book } from '../model/books.model';
 })
 export class BookserviceService {
   private bookURl = environment.bookUrl;
+  private searchBookData = new Subject<any>();
   private _autoRefresh$ = new Subject();
   private httpOtions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
@@ -29,6 +30,19 @@ export class BookserviceService {
 
   addToBag(id, token:string): Observable<any> {
     return this.http.post<any>(this.bookURl + environment.addToBag,{},{ headers: new HttpHeaders().set("token", localStorage.token) });
+  }
+
+  getAllCartBooks(token:string): Observable<any> {
+    return this.http.post<any>(this.bookURl + environment.getCartBooks,{},{headers: new HttpHeaders().set("token", localStorage.token)});
+  }
+
+  setSearchBookData(message: any) {
+    console.log("set service", message);
+    return this.searchBookData.next({ books: message });
+  }
+  getSearchBookData(): Observable<any> {
+    console.log("get service");
+    return this.searchBookData.asObservable();
   }
 
 }
