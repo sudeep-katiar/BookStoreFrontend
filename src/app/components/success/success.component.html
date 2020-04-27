@@ -1,1 +1,34 @@
-<p>success works!</p>
+<app-toolbar></app-toolbar>
+
+<div class="main-container">
+    <div class="container">
+        <div class="image">
+            <img src="../../../assets/delivery.gif" alt="order placed image" style="height: 20em ; width: 30em;"/>
+        </div>
+        <div class="order">Order Placed Successfully</div>
+    </div>
+    <div class="tables">
+        <table class="in-table">
+            <thead>
+                <tr>
+                <th>Email us</th>
+                <th>Contact us</th>
+                <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>admin@bookstore.com</td>
+                    <td>+91 8163475881</td>
+                    <td>42, 14th Main, 15th Cross, Sector 4, opp to BDA
+                        <br>complex, near Kumarokom Restaurant, HSR Layout,
+                        <br>Bangalore 560034
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="shop">
+        <button mat-button style="background-color: blue;" (click)="shopAgain()">Continue Shopping</button>
+    </div>
+</div>
