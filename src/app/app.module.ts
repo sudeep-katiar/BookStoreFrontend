@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatTooltipModule, MatCheckbox, MatCheckboxModule, MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,7 +26,8 @@ import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { BooksearchPipe } from './pipes/booksearch.pipe';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CartComponent } from './components/cart/cart.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component'; 
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { SuccessComponent } from './components/success/success.component'; 
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     BooksearchPipe,
     DashboardComponent,
     CartComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    SuccessComponent
     
   ],
   imports: [
@@ -44,6 +48,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatExpansionModule,
+    MatStepperModule,
     MatRadioModule,
     MatSnackBarModule,
     HttpClientModule,
