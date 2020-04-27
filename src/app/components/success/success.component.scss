@@ -36,6 +36,10 @@
     left: 17em;
 }
 
+thead {
+    background-color: grey;
+}
+
 .in-table,td,th {
     border: 1px solid black;
     border-collapse: collapse;
