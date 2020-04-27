@@ -1,11 +1,59 @@
-.container {
-    margin-top: 5px;
-    height: auto;
-    width: auto;
+.main-container {
+  height: 80%;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1%;
+  margin-left: 10%;
+  margin-right: 10%;
+  justify-content: space-between;
+}
+
+// .mat-form-field + .mat-form-field {
+//   margin-left: 8px;
+// }
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.bookname {
+  margin-bottom: 5px;
+}
+
+.authorname {
+  font-size: x-small;
+  color: grey;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.price {
+  color: darkred;
+  margin-bottom: 5px;
+}
+
+.remove {
+  color: white;
+  background-color: tomato;
+  width: 8em;
+  outline: none;
+  border-radius: 10px 10px 10px 10px;
+}
+
 
 .form_field{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
