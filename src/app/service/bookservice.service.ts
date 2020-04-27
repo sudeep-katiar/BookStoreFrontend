@@ -28,8 +28,9 @@ export class BookserviceService {
     );
   }
 
-  addToBag(id, token:string): Observable<any> {
-    return this.http.post<any>(this.bookURl + environment.addToBag,{},{ headers: new HttpHeaders().set("token", localStorage.token) });
+  addToBag(id:any, token:string): Observable<any> {
+    console.log(id);
+    return this.http.post<any>(`${this.bookURl}${environment.addToBag}?id=${id}` ,{},{ headers: new HttpHeaders().set("token", localStorage.token) });
   }
 
   getAllCartBooks(token:string): Observable<any> {
