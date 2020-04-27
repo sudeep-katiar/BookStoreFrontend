@@ -1,84 +1,175 @@
 <app-toolbar></app-toolbar>
 
-<div class=main-div>
-  <mat-card style="width: 30em; height: 80vh;">
-    <form [formGroup]="registerForm">
+<div class="main-container">
+  <div class="container">
+    <div class="customer" style="width: 55em;">
+      <!-- <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              My Cart
+            </mat-panel-title>
+            <mat-panel-description>
+              Book added to cart
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input matInput>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput type="number" min="1">
+          </mat-form-field>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Customer Details
+            </mat-panel-title>
+            <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-
-
-      <div fxLayout="row" fxLayoutAlign="center" style="font-size:24px; ">
-          Customer Details
-        </div>
-
-      <div class="form_field">
-
-        <mat-form-field appearance="outline">
-          <mat-label>Name</mat-label>
-            <input matInput placeholder="Name">
-            <mat-icon matSuffix>perm_identity</mat-icon>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>pinCode</mat-label>
-          <input matInput placeholder="pinCode">
-          <mat-icon matSuffix>perm_identity</mat-icon>
-        </mat-form-field></div>
-
-      <div class="form_field">
-        <mat-form-field appearance="outline" class="form-Email">
-          <mat-label>Email</mat-label>
-            <input matInput placeholder="email">
-            <mat-icon matSuffix>account_circle</mat-icon>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Mobile Number</mat-label>
-          <input matInput placeholder="mobilenumber">
-          <mat-icon matSuffix>phone</mat-icon>
-        </mat-form-field>
-
-      </div>
-
-      <div>
-        <mat-form-field appearance="outline">
-          <mat-label>address</mat-label>
-          <input matInput placeholder="Address">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-          <div class="gender"><label class="example-margin">Gender:</label>&nbsp;
-            <mat-radio-group>
-              <mat-radio-button value="male">Male</mat-radio-button>&nbsp;
-              <mat-radio-button value="female">Female</mat-radio-button>&nbsp;
-              <mat-radio-button value="other">Other</mat-radio-button>&nbsp;
-            </mat-radio-group>
-          </div>
           <div class="form_field">
-            <button mat-raised-button (click)="onSubmit()">Register</button>
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+              <mat-label>Phone number</mat-label>
+              <input matInput type="number">
+            </mat-form-field>
           </div>
-      </div>
-    </form>
-  </mat-card>
-</div>
 
+          <div class="form_field">
+            <mat-form-field appearance="outline">
+              <mat-label>Pincode</mat-label>
+              <input matInput type="number">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+              <mat-label>Locality</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
 
+          <div class="form_field">
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
 
-<div class="container" fxLayoutAlign="center center">
-  <div class="list-books">
-      <div class="getAllBooks" *ngFor="let book of books" fxLayout="{{ view }}" [fxLayoutAlign]="center" fxFlexOffset="5">
-        <mat-card matTooltip="{{ book.bookDetails }}">
-          <mat-card-title>
-            <img src="../../../{{ book.filepath }}" style=" height: 150px; width: 120px; margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; "/>
-          </mat-card-title>
-          <mat-card-content
-            ><div class="bookname">{{ book.bookName }}</div>
-            <div class="authorname">by {{ book.authorName }}</div>
-            <div class="price">Rs. {{ book.price }}</div>
-            <div class="cart-buttons">
-              <div><button class="addtobag" (click)="addToBag(book.bookId)">ADD TO BAG</button></div>
-              <div><button class="wishlist" [style.background-color]="toggle ? 'green' : 'red'" (click)="addToWishlist(book.bookId)">WISHLIST</button></div>
+          <div class="form_field">
+            <mat-form-field appearance="outline">
+              <mat-label>city/town</mat-label>
+              <input matInput>
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+              <mat-label>Landmark</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion> -->
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step>
+            <ng-template matStepLabel>My Cart
+              <span style="font-size: 15px; color: rgb(190, 186, 186);">({{ size }} items)</span> 
+            </ng-template>
+            <div class="getCartBooks" *ngFor="let book of cartBooks" fxLayout="{{ view }}" [fxLayoutAlign]="center" fxFlexOffset="5">
+              
+              <img src="../../../{{ book.filepath }}" style=" height: 120px; width: 90px;"/>
+              <mat-card matTooltip="{{ book.bookDetails }}">  
+                <div class="bookname">{{ book.bookName }}</div>
+                <div class="authorname">by {{ book.authorName }}</div>
+                <div class="price">₹. {{ book.price }}</div>
+
+                <div class="cart-buttons">
+                  <button class="remove" (click)="addToBag(book.bookId)">remove</button>
+                </div>
+              </mat-card>
             </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
+            <div style="padding-left: 1em;">
+              <button mat-button matStepperNext style="background-color: gainsboro;">Next</button>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="customerFormGroup">
+          <form [formGroup]="customerFormGroup">
+            <ng-template matStepLabel>Fill out your details</ng-template>
+            <div class="form_field">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required>
+              </mat-form-field>
+          
+              <mat-form-field appearance="outline">
+                <mat-label>Phone number</mat-label>
+                <input matInput type="number" formControlName="phone" required>
+              </mat-form-field>
+            </div>
+  
+            <div class="form_field">
+              <mat-form-field appearance="outline">
+                <mat-label>Pincode</mat-label>
+                <input matInput type="number" formControlName="pincode" required>
+              </mat-form-field>
+          
+              <mat-form-field appearance="outline">
+                <mat-label>Locality</mat-label>
+                <input matInput formControlName="locality" required>
+              </mat-form-field>
+            </div>
+  
+            <div class="form_field">
+              <mat-form-field style="width: 34em;">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address" required>
+              </mat-form-field>
+            </div>
+  
+            <div class="form_field">
+              <mat-form-field appearance="outline">
+                <mat-label>city/town</mat-label>
+                <input matInput formControlName="city" required>
+              </mat-form-field>
+          
+              <mat-form-field appearance="outline">
+                <mat-label>Landmark</mat-label>
+                <input matInput formControlName="landmark">
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>Back</button> &nbsp;
+              <button mat-button matStepperNext style="background-color: gainsboro;">Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Order summery</ng-template>
+          <div class="getCartBooks" *ngFor="let book of cartBooks" fxLayout="{{ view }}" [fxLayoutAlign]="center" fxFlexOffset="5">
+              
+            <img src="../../../{{ book.filepath }}" style=" height: 120px; width: 90px;"/>
+            <mat-card><br>
+              <div class="bookname">{{ book.bookName }}</div><br>
+              <div class="price">₹. {{ book.price }}</div>
+            </mat-card>
+          </div>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button> &nbsp;
+            <button mat-button (click)="stepper.reset()" style="background-color: gainsboro;">CHECKOUT</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
     </div>
+  </div>
 </div>
