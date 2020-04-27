@@ -1,0 +1,49 @@
+.main-container {
+    height: 80%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: oldlace;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: space-between;
+}
+
+.image {
+    position: absolute;
+    left: 23em;
+    top: 4em;
+}
+
+.order {
+    font-family: inherit;
+    font-size: xx-large;
+    position: absolute;
+    left: 13em;
+    top: 11em;
+}
+
+.tables {
+    position: absolute;
+    bottom: 9em;
+    left: 17em;
+}
+
+.in-table,td,th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.shop {
+    position: absolute;
+    left: 30em;
+    bottom: 3em;
+    color: white;
+}
