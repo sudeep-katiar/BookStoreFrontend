@@ -14,7 +14,7 @@ import { CustomerService } from 'src/app/service/customer.service';
 })
 export class CartComponent implements OnInit {
   // panelOpenState = false;
-  isLinear = false;
+  isLinear = true;
   customerFormGroup: FormGroup;
   cartBooks: any;
   size: any;
@@ -81,6 +81,10 @@ export class CartComponent implements OnInit {
         console.log(error);
         this.snackbar.open(error.error.description, 'error', { duration: 3000 });
       });
+  }
+
+  checkout() {
+    this.router.navigateByUrl("/success");
   }
 
 }
