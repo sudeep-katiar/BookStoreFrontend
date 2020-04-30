@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
         phone: new FormControl('', Validators.required),
         pincode: new FormControl('', Validators.required),
         locality: new FormControl('', Validators.required),
+        email: new FormControl('', Validators.required),
         address: new FormControl('', Validators.required),
         city: new FormControl('', Validators.required),
         landmark: new FormControl('')
