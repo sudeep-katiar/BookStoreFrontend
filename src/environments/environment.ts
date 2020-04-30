@@ -13,8 +13,9 @@ export const environment = {
 
   getAllBooks:'allbooks/',
   addToBag:'addToBag/',
+  wishlistURL:'wishlist/',
   getCartBooks:'cartbooks/',
-  details:'details/'
+  details:'customerAdd/'
 };
 
 /*
