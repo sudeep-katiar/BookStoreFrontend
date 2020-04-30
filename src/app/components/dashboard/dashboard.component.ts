@@ -79,7 +79,14 @@ export class DashboardComponent implements OnInit {
   }
 
   addToWishlist(bookId) {
-    this.toggle = !this.toggle;
+    
+    this.bookService.wishlistBag(bookId, this.token).subscribe((message) => {
+      console.log(message);
+      this.toggle = !this.toggle;
+      this.matSnackBar.open("Book Added to Wishlist SuccessFully", "OK", {
+        duration: 4000,
+      });
+    });
   }
 
   // bookSearch() {
