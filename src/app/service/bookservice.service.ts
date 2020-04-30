@@ -33,6 +33,11 @@ export class BookserviceService {
     return this.http.post<any>(`${this.bookURl}${environment.addToBag}?id=${id}` ,{},{ headers: new HttpHeaders().set("token", localStorage.token) });
   }
 
+  wishlistBag(id:any, token:string): Observable<any> {
+    console.log(id);
+    return this.http.post<any>(`${this.bookURl}${environment.wishlistURL}?id=${id}` ,{},{ headers: new HttpHeaders().set("token", localStorage.token) });
+  }
+
   getAllCartBooks(token:string): Observable<any> {
     return this.http.post<any>(this.bookURl + environment.getCartBooks,{},{headers: new HttpHeaders().set("token", localStorage.token)});
   }
